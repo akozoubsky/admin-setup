@@ -70,4 +70,39 @@ function ak_remove_menu_pages() {
 	}
       
 }
+
+/**
+ * Remove widgets from the Admin Dashboard screen.
+ */
+
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+function remove_dashboard_widgets() {
+
+	// Remove meta boxes from Wordpress dashboard for all users
+	remove_meta_box('dashboard_primary', 'dashboard', 'side');   // WordPress blog
+	remove_meta_box('dashboard_secondary', 'dashboard', 'side');   // Other WordPress News
+		
+	if ( ! current_user_can( 'activate_plugins' ) ) {
+	
+		// Globalize the metaboxes array, this holds all the widgets for wp-admin
+		global $wp_meta_boxes;
+     
+		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+		unset($wp_meta_boxes['dashboard']['normal']['core']['photocrati_admin_dashboard_widget']); 
+    
+		remove_meta_box('dashboard_right_now', 'dashboard', 'normal');   // Right Now
+		/* remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); */ // Recent Comments
+		remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');  // Incoming Links
+		remove_meta_box('dashboard_plugins', 'dashboard', 'normal');   // Plugins
+		remove_meta_box('dashboard_quick_press', 'dashboard', 'side');  // Quick Press
+		remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');  // Recent Drafts
+		// use 'dashboard-network' as the second parameter to remove widgets from a network dashboard.    
+    
+	}
+	 
+}
+
 ?>
