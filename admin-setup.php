@@ -29,9 +29,9 @@
  * Remove WordPress Icon from Admin Bar
  */
  
-add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
+add_action( 'wp_before_admin_bar_render', 'adms_remove_admin_bar_links' );
 
-function remove_admin_bar_links() {
+function adms_remove_admin_bar_links() {
 	 global $wp_admin_bar;
 	$wp_admin_bar->remove_menu('wp-logo');
 }
@@ -46,9 +46,9 @@ add_filter('show_admin_bar', '__return_false');
  * Admin footer modification.
  */
 
-add_filter('admin_footer_text', 'remove_footer_admin');
+add_filter('admin_footer_text', 'adms_remove_footer_admin');
 
-function remove_footer_admin () {
+function adms_remove_footer_admin () {
     echo '<span id="footer-thankyou">Desenvolvido por <a href="http://www.alexandrekozoubsky.com" target="_blank">Alexandre Kozoubsky - http://www.alexandrekozoubsky.com</a></span>';
 }
 
@@ -59,9 +59,9 @@ function remove_footer_admin () {
  * Removing a menu does not replace the need to filter a user's permissions as appropriate. 
  */
 
-add_action( 'admin_menu', 'ak_remove_menu_pages' );
+add_action( 'admin_menu', 'adms_remove_menu_pages' );
 
-function ak_remove_menu_pages() {
+function adms_remove_menu_pages() {
     
 	if ( ! current_user_can( 'activate_plugins' ) ) {
 	
@@ -75,9 +75,9 @@ function ak_remove_menu_pages() {
  * Remove widgets from the Admin Dashboard screen.
  */
 
-add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
+add_action('wp_dashboard_setup', 'adms_remove_admin_dashboard_widgets' );
 
-function remove_dashboard_widgets() {
+function adms_remove_admin_dashboard_widgets() {
 
 	// Remove meta boxes from Wordpress dashboard for all users
 	remove_meta_box('dashboard_primary', 'dashboard', 'side');   // WordPress blog
