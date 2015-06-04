@@ -117,16 +117,12 @@ function remove_dashboard_widgets() {
     
 	}
 	
-	/*
+
+	/* 
 	if ( ! current_user_can( 'edit_tribe_event' ) ) {
 		remove_menu_page('edit.php?post_type=tribe_events'); // Tribe Events - Calendar
 	}
 	*/
-	
-	add_filter('pre_option_update_core','__return_null');
-	add_filter('pre_site_transient_update_core','remove_core_updates');
-	add_filter('pre_site_transient_update_plugins','remove_core_updates');
-	add_filter('pre_site_transient_update_themes','remove_core_updates');
 	 
 }
 
