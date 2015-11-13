@@ -67,8 +67,6 @@ function adminsetup_remove_menu_pages() {
 
 		/* Pick up your itens */
 		remove_menu_page('index.php'); // Panel Dashboard		
-		remove_menu_page('options-general.php');
-		remove_menu_page('tools.php');
 		remove_menu_page('edit.php'); // Posts
 		remove_menu_page('upload.php'); // Media
 		remove_menu_page('link-manager.php'); // Links
@@ -79,6 +77,7 @@ function adminsetup_remove_menu_pages() {
 		remove_menu_page('users.php'); // Users
 		remove_menu_page('tools.php'); // Tools
 		remove_menu_page('options-general.php'); // Settings
+		
 		remove_menu_page('itsec'); // IThemes Security Plugin
 		remove_menu_page('duplicator'); // Duplicator Plugin
 		remove_menu_page('flamingo'); // Flamingo Plugin		
