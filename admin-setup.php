@@ -59,7 +59,7 @@ function adminsetup_remove_footer_admin () {
  * Removing a menu does not replace the need to filter a user's permissions as appropriate. 
  */
 
-add_action( 'admin_menu', 'adminsetup_remove_menu_pages' );
+add_action( 'admin_menu', 'adminsetup_remove_menu_pages', 99 ); // Priority is important for some plugins like ACF
 
 function adminsetup_remove_menu_pages() {
     
@@ -80,7 +80,8 @@ function adminsetup_remove_menu_pages() {
 		
 		remove_menu_page('itsec'); // IThemes Security Plugin
 		remove_menu_page('duplicator'); // Duplicator Plugin
-		remove_menu_page('flamingo'); // Flamingo Plugin		
+		remove_menu_page('flamingo'); // Flamingo Plugin
+		remove_menu_page('edit.php?post_type=acf'); // Advanced Custom Fields Plugin	
 	}
       
 }
@@ -89,7 +90,7 @@ function adminsetup_remove_menu_pages() {
  * Remove widgets from the Admin Dashboard screen.
  */
 
-add_action('wp_dashboard_setup', 'adminsetup_remove_dashboard_widgets' );
+add_action('wp_dashboard_setup', 'adminsetup_remove_dashboard_widgets', 99 );
 
 function adminsetup_remove_dashboard_widgets() {
 
