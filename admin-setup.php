@@ -82,6 +82,7 @@ function adminsetup_remove_menu_pages() {
 		remove_menu_page('duplicator'); // Duplicator Plugin
 		remove_menu_page('flamingo'); // Flamingo Plugin
 		remove_menu_page('edit.php?post_type=acf'); // Advanced Custom Fields Plugin	
+		remove_menu_page('acf-options'); // Options Page Plugin
 	}
       
 }
