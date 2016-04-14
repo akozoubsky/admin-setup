@@ -59,7 +59,7 @@ function adminsetup_remove_footer_admin () {
  * Removing a menu does not replace the need to filter a user's permissions as appropriate. 
  */
 
-add_action( 'admin_menu', 'adminsetup_remove_menu_pages', 99 ); // Priority is important for some plugins like ACF
+add_action( 'admin_menu', 'adminsetup_remove_menu_pages', 999 ); // Priority is important for some plugins like ACF
 
 function adminsetup_remove_menu_pages() {
     
@@ -82,7 +82,8 @@ function adminsetup_remove_menu_pages() {
 		remove_menu_page('duplicator'); // Duplicator Plugin
 		remove_menu_page('flamingo'); // Flamingo Plugin
 		remove_menu_page('edit.php?post_type=acf'); // Advanced Custom Fields Plugin	
-		remove_menu_page('acf-options'); // Options Page Plugin
+		remove_menu_page('acf-options'); // ACF Options Page Plugin
+		remove_menu_page('jetpack'); // JetPack - Obs: Soh funciona com prioridade muito alta
 	}
       
 }
@@ -91,7 +92,7 @@ function adminsetup_remove_menu_pages() {
  * Remove widgets from the Admin Dashboard screen.
  */
 
-add_action('wp_dashboard_setup', 'adminsetup_remove_dashboard_widgets', 99 );
+add_action('wp_dashboard_setup', 'adminsetup_remove_dashboard_widgets', 999 );
 
 function adminsetup_remove_dashboard_widgets() {
 
@@ -116,7 +117,8 @@ function adminsetup_remove_dashboard_widgets() {
 		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_addthis']); // AddThis
 		unset($wp_meta_boxes['dashboard']['normal']['core']['events_dashboard_window']); // The Events Calendar	
 		unset($wp_meta_boxes['dashboard']['normal']['core']['bbp-dashboard-right-now']); //BBPress
-		unset($wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard']); // Gravity Forms	
+		unset($wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard']); // Gravity Forms
+		unset($wp_meta_boxes['dashboard']['normal']['core']['jetpack_summary_widget']); // JetPack
 	}
 
 	/* 
